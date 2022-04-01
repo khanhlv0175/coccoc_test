@@ -44,7 +44,6 @@ function GiftExchange({ pageItem = 20 }) {
                         "Quà tặng",
                     ]}
                 />
-                {/* <Example /> */}
             </div>
             <div className="flex flex-wrap gap-x-[3rem] gap-y-[3rem] min-h-[65vh] justify-center xl:justify-between">
                 {currentPageData &&

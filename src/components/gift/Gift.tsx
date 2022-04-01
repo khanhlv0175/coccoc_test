@@ -7,7 +7,11 @@ function Gift({ children }: any) {
         { title: "Đổi quà tặng", component: <GiftExchange /> },
         {
             title: "Vòng quay may mắn",
-            component: <div>Hello</div>,
+            component: (
+                <div className="min-h-[65vh] text-center">
+                    Page did not implemented
+                </div>
+            ),
             unread: true,
         },
     ];
@@ -20,10 +24,7 @@ function Gift({ children }: any) {
             <Tab.Group>
                 <Tab.List className=" pl-4 xl:pl-0 flex space-x-1 max-w-[110rem] bg-transparent mx-auto">
                     {tabList.map((tab, tabIdx) => (
-                        <Tab
-                            className="relative bg-white h-[5rem] rounded-t-md"
-                            disabled={tabIdx > 0}
-                        >
+                        <Tab className="relative bg-white h-[5rem] rounded-t-md">
                             {({ selected }) => {
                                 if (selected) tab.unread = false;
                                 return (
