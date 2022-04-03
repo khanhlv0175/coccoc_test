@@ -26,7 +26,7 @@ function Card(props: CardProp) {
     const validTo = formatDate(props.validTo);
 
     return (
-        <div className="flex flex-col rounded-[0.8rem] shadow w-[90%] max-h-[35rem] md:max-w-[40%] lg:max-w-[30%] xl:max-w-[25rem] max-w-[40rem]">
+        <div className="flex flex-col rounded-[0.8rem] shadow max-h-[35rem] hover:cursor-pointer transition ease-in-out delay-50 hover:-translate-y-1 hover:scale-110 duration-150">
             <img
                 src={props.coverImg}
                 alt="cover"

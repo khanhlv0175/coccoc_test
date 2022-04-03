@@ -45,7 +45,7 @@ function GiftExchange({ pageItem = 20 }) {
                     ]}
                 />
             </div>
-            <div className="flex flex-wrap gap-x-[3rem] gap-y-[3rem] min-h-[65vh] justify-center xl:justify-between">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 w-[80%] md:w-full self-center gap-x-[2rem] gap-y-[3rem] min-h-[65vh]">
                 {currentPageData &&
                     currentPageData.length > 0 &&
                     currentPageData.map((gift: GiftData) => {
@@ -73,4 +73,4 @@ function GiftExchange({ pageItem = 20 }) {
     );
 }
 
-export default GiftExchange;
+export default React.memo(GiftExchange);
