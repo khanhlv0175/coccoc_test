@@ -3,15 +3,15 @@ import { FilterIcon } from "@heroicons/react/outline";
 import { CheckIcon, ChevronDownIcon } from "@heroicons/react/solid";
 import React, { Fragment, useState } from "react";
 
-function Filter(props: { data: []; filterList: string[] }) {
-    const sortList = [
-        { id: 1, name: "Durward Reynolds" },
-        { id: 2, name: "Kenton Towne" },
-        { id: 3, name: "Therese Wunsch" },
-        { id: 4, name: "Benedict Kessler" },
-        { id: 5, name: "Katelyn Rohan" },
-    ];
+const sortList = [
+    { id: 1, name: "Phổ biến" },
+    { id: 2, name: "Giá tăng dần" },
+    { id: 3, name: "Giá giảm dần" },
+    { id: 4, name: "Thời gian hiệu lực tăng dần" },
+    { id: 5, name: "Thời gian hiệu lực giảm dần" },
+];
 
+function Filter(props: { data: []; filterList: string[] }) {
     const [selectedSort, setSelectedSort] = useState(sortList[0]);
 
     const checkList = (
@@ -22,29 +22,14 @@ function Filter(props: { data: []; filterList: string[] }) {
                         <input
                             type="checkbox"
                             id={filter}
-                            className="opacity-0 absolute h-6 w-6"
+                            className="opacity-0 absolute h-6 w-6 cursor-pointer"
                         />
                         <div className="bg-white border-2 rounded-md border-greyscale-300 w-6 h-6 flex flex-shrink-0 justify-center items-center">
-                            <svg
-                                className="fill-current hidden w-4 h-4 text-white pointer-events-none"
-                                version="1.1"
-                                viewBox="0 0 17 12"
-                                xmlns="http://www.w3.org/2000/svg"
-                            >
-                                <g fill="none" fillRule="evenodd">
-                                    <g
-                                        transform="translate(-9 -11)"
-                                        fill="#fff"
-                                        fillRule="nonzero"
-                                    >
-                                        <path d="m25.576 11.414c0.56558 0.55188 0.56558 1.4439 0 1.9961l-9.404 9.176c-0.28213 0.27529-0.65247 0.41385-1.0228 0.41385-0.37034 0-0.74068-0.13855-1.0228-0.41385l-4.7019-4.588c-0.56584-0.55188-0.56584-1.4442 0-1.9961 0.56558-0.55214 1.4798-0.55214 2.0456 0l3.679 3.5899 8.3812-8.1779c0.56558-0.55214 1.4798-0.55214 2.0456 0z" />
-                                    </g>
-                                </g>
-                            </svg>
+                            <CheckIcon className="text-white h-6 w-6 pointer-events-none" />
                         </div>
                         <label
                             htmlFor={filter}
-                            className="text-greyscale-300 text-[1.4rem] ml-2"
+                            className="text-greyscale-300 text-[1.4rem] ml-2 cursor-pointer"
                         >
                             {filter}
                         </label>
@@ -85,27 +70,29 @@ function Filter(props: { data: []; filterList: string[] }) {
                                         }`
                                     }
                                 >
-                                    {({ selected }) => (
-                                        <>
-                                            <span
-                                                className={`block truncate ${
-                                                    selected
-                                                        ? "font-medium"
-                                                        : "font-normal"
-                                                }`}
-                                            >
-                                                {sort.name}
-                                            </span>
-                                            {selected && (
-                                                <span className="absolute inset-y-0 left-0 flex items-center pl-3">
-                                                    <CheckIcon
-                                                        className="w-6 h-6"
-                                                        aria-hidden
-                                                    />
+                                    {({ selected }) => {
+                                        return (
+                                            <>
+                                                <span
+                                                    className={`block truncate text-left ${
+                                                        selected
+                                                            ? "font-semibold"
+                                                            : "font-normal"
+                                                    }`}
+                                                >
+                                                    {sort.name}
                                                 </span>
-                                            )}
-                                        </>
-                                    )}
+                                                {selected && (
+                                                    <span className="absolute inset-y-0 left-0 flex items-center pl-3">
+                                                        <CheckIcon
+                                                            className="w-6 h-6"
+                                                            aria-hidden
+                                                        />
+                                                    </span>
+                                                )}
+                                            </>
+                                        );
+                                    }}
                                 </Listbox.Option>
                             ))}
                         </Listbox.Options>
