@@ -1,5 +1,5 @@
-import React, { useEffect, useMemo, useState } from "react";
-import { GET_LIST_GIFT } from "../../constants/api";
+import React, { useMemo, useState } from "react";
+// import { GET_LIST_GIFT } from "../../constants/api";
 import Pagination from "../common/Pagination";
 import Card from "./Card";
 import Filter from "./Filter";
@@ -13,8 +13,8 @@ interface GiftData {
     activeTimeTo: number;
 }
 
-function GiftExchange({ pageItem = 20 }) {
-    const [dataGift, setDataGift] = useState([]) as any;
+function GiftExchange({ pageItem = 20, dataGift = [] as any }) {
+    // const [dataGift, setDataGift] = useState([]) as any;
     const [currentPage, setCurrentPage] = useState(1);
 
     // Get data for current page
@@ -24,13 +24,13 @@ function GiftExchange({ pageItem = 20 }) {
         return dataGift.slice(firstPageIdx, lastPageIdx);
     }, [currentPage, dataGift]);
 
-    // Get all data
-    useEffect(() => {
-        fetch(GET_LIST_GIFT)
-            .then((res) => res.json())
-            .then((data) => setDataGift([...data]))
-            .catch((err) => console.log(err));
-    }, []);
+    // // Get all data
+    // useEffect(() => {
+    //     fetch(GET_LIST_GIFT)
+    //         .then((res) => res.json())
+    //         .then((data) => setDataGift([...data]))
+    //         .catch((err) => console.log(err));
+    // }, []);
 
     return (
         <div className="max-w-[110rem] flex flex-col mx-auto bg-white">

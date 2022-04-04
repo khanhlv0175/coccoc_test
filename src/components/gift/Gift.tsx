@@ -1,10 +1,28 @@
 import { Tab } from "@headlessui/react";
-import React, { Fragment } from "react";
+import React, { useEffect, useState } from "react";
+import { GET_LIST_GIFT } from "../../constants/api";
 import GiftExchange from "./GiftExchange";
 
 function Gift({ children }: any) {
+    // const giftExchange = useRef(<GiftExchange />);
+    // const abc = useMemo(() => <GiftExchange />, []);
+    // const [selectedIndex, setSelectedIndex] = useState(0);
+    const [dataGift, setDataGift] = useState([]) as any;
+
+    // Get all data
+    useEffect(() => {
+        fetch(GET_LIST_GIFT)
+            .then((res) => res.json())
+            .then((data) => setDataGift([...data]))
+            .catch((err) => console.log(err));
+    }, []);
+
     const tabList = [
-        { title: "Đổi quà tặng", component: <GiftExchange /> },
+        // { title: "Đổi quà tặng", component: giftExchange },
+        {
+            title: "Đổi quà tặng",
+            component: <GiftExchange dataGift={dataGift} />,
+        },
         {
             title: "Vòng quay may mắn",
             component: (
@@ -49,7 +67,10 @@ function Gift({ children }: any) {
                 </Tab.List>
                 <Tab.Panels className="bg-white">
                     {tabList.map((tab, tabIdx) => (
-                        <Tab.Panel key={tabIdx} className="p-10">
+                        <Tab.Panel key={tabIdx.toString()} className="p-10">
+                            {({ selected }) => {
+                                console.log(selected);
+                            }}
                             {tab.component}
                         </Tab.Panel>
                     ))}
