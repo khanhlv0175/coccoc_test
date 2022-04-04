@@ -43,7 +43,7 @@ function Filter(props: { data: []; filterList: string[] }) {
         <div className="w-[20rem] lg:w-[28rem] text-[1.4rem] flex lg:ml-auto ring-transparent">
             <Listbox value={selectedSort} onChange={setSelectedSort}>
                 <div className="relative mt-1 w-full">
-                    <Listbox.Button className="relative w-full py-2 pl-3 pr-10 text-left text-greyscale-500 bg-white border-greyscale-500 border-[0.1rem] rounded-lg shadow-md cursor-default">
+                    <Listbox.Button className="relative w-full py-4 pl-3 pr-10 text-left text-greyscale-500 bg-white border-greyscale-800 border-[0.1rem] rounded-lg shadow-md cursor-default">
                         <span className="block truncate">
                             {`Sắp xếp theo: ${selectedSort.name}`}
                         </span>
@@ -126,7 +126,7 @@ function Filter(props: { data: []; filterList: string[] }) {
                         >
                             <Popover.Panel className="absolute z-10 w-screen max-w-sm mt-1 left-1/2 -translate-x-1/4">
                                 <div className="rounded-lg shadow-lg ring-1 ring-black ring-opacity-5 ">
-                                    <div className="relative grid gap-8 bg-[#ddd] rounded-[inherit] bg-opacity-90 p-7">
+                                    <div className="relative grid gap-8 bg-[#eee] rounded-[inherit] bg-opacity-90 p-7">
                                         {checkList}
                                         {sortCondition}
                                     </div>
